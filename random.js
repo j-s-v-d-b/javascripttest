@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var image = document.getElementById('cropped-image');
-    var imageUrl = 'URL_OF_YOUR_LARGE_IMAGE'; // Replace this with the URL of your large image
+    var imageUrl = 'https://i.imgur.com/0SZjrzh.png'; // Replace this with the URL of your large image
 
     // Function to generate random crop coordinates
     function getRandomCropCoordinates() {

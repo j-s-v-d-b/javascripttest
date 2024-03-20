@@ -6,13 +6,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to generate random crop coordinates
     function getRandomCropCoordinates() {
-        var x = Math.floor(Math.random() * (image.naturalWidth - containerWidth));
-        var y = Math.floor(Math.random() * (image.naturalHeight - containerHeight));
+        var maxWidth = image.naturalWidth - containerWidth;
+        var maxHeight = image.naturalHeight - containerHeight;
+        var x = Math.floor(Math.random() * maxWidth);
+        var y = Math.floor(Math.random() * maxHeight);
         return { x: x, y: y };
     }
 
-    // Set initial image source to default image
-    image.src = 'https://i.imgur.com/0SZjrzh.png'; // Replace 'DEFAULT_IMAGE_URL' with the URL of your default image
+    // Function to update image source with a random part of the large image
+    function updateImageSource() {
+        var cropCoordinates = getRandomCropCoordinates();
+        image.src = imageUrl + '#xywh=' + cropCoordinates.x + ',' + cropCoordinates.y + ',' + containerWidth + ',' + containerHeight;
+    }
 
     // Load event handler to set image source after dimensions are available
     image.addEventListener('load', function() {
@@ -24,12 +29,6 @@ document.addEventListener("DOMContentLoaded", function() {
         image.style.width = cropWidth + 'px';
         image.style.height = cropHeight + 'px';
     });
-
-    // Function to update image source with a random part of the large image
-    function updateImageSource() {
-        var cropCoordinates = getRandomCropCoordinates();
-        image.src = imageUrl + '#xywh=' + cropCoordinates.x + ',' + cropCoordinates.y + ',' + containerWidth + ',' + containerHeight;
-    }
 
     // Call the updateImageSource function to change the image source
     updateImageSource();

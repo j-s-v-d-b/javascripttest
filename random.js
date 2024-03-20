@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
         return { x: x, y: y };
     }
 
-    // Set new crop coordinates and update image source
-    var cropCoordinates = getRandomCropCoordinates();
-    image.src = imageUrl + '#xywh=' + cropCoordinates.x + ',' + cropCoordinates.y + ',' + image.clientWidth + ',' + image.clientHeight;
+    // Load event handler to set image source after dimensions are available
+    image.addEventListener('load', function() {
+        var cropCoordinates = getRandomCropCoordinates();
+        image.src = imageUrl + '#xywh=' + cropCoordinates.x + ',' + cropCoordinates.y + ',' + image.clientWidth + ',' + image.clientHeight;
+    });
+
+    // Set initial image source
+    image.src = imageUrl;
 });

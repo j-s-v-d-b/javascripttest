@@ -11,12 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
         return { x: x, y: y };
     }
 
-    // Load event handler to set image source after dimensions are available
-    image.addEventListener('load', function() {
-        var cropCoordinates = getRandomCropCoordinates();
-        image.src = imageUrl + '#xywh=' + cropCoordinates.x + ',' + cropCoordinates.y + ',' + image.clientWidth + ',' + image.clientHeight;
-    });
-
     // Set initial image source
     image.src = imageUrl;
 });

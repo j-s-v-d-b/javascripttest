@@ -1,11 +1,11 @@
 .image-container {
-    width: 4252px; /* Adjust width as needed */
-    height: 2657px; /* Adjust height as needed */
+    width: 625px; /* Width of the image container */
+    height: 500px; /* Height of the image container */
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; /* Optional: Add border for visualization */
 }
 
 #cropped-image {
-    width: 100%;
-    height: auto;
+    width: 100%; /* This ensures that the image fills the container */
+    height: 100%; /* This ensures that the image fills the container */
 }

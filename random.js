@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return { x: x, y: y };
     }
 
+    // Set initial image source to default image
+    image.src = 'https://i.imgur.com/0SZjrzh.png'; // Replace 'DEFAULT_IMAGE_URL' with the URL of your default image
+
     // Load event handler to set image source after dimensions are available
     image.addEventListener('load', function() {
         var cropCoordinates = getRandomCropCoordinates();
@@ -22,6 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
         image.style.height = cropHeight + 'px';
     });
 
-    // Set initial image source
-    image.src = imageUrl;
+    // Function to update image source with a random part of the large image
+    function updateImageSource() {
+        var cropCoordinates = getRandomCropCoordinates();
+        image.src = imageUrl + '#xywh=' + cropCoordinates.x + ',' + cropCoordinates.y + ',' + containerWidth + ',' + containerHeight;
+    }
+
+    // Call the updateImageSource function to change the image source
+    updateImageSource();
 });
